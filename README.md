@@ -81,17 +81,7 @@ This project was developed as a B.Tech final year project with an improved and m
 
 ---
 
-## ⚙️ Installation
 
-```bash
-git clone https://github.com/AryanKushx/Estate-X-Real-Estate-Marketplace-Using-Blockchain.git
-
-cd Estate-X-Real-Estate-Marketplace-Using-Blockchain
-
-npm install
-```
-
----
 
 ## ▶️ Run the Project
 
@@ -111,13 +101,11 @@ npm run build
 
 ## 📸 Screenshots
 
-(Add your screenshots here)
+<img width="1160" height="582" alt="image" src="https://github.com/user-attachments/assets/1c2349e5-bca3-4c1d-84e7-db4f8122e5bd" />
+
+
+
 
 ---
 
-## 👨‍💻 Author
 
-**Aryan Kushwaha**
-
-B.Tech Computer Engineering  
-Aligarh Muslim University
