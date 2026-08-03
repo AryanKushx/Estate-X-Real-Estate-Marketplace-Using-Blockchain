@@ -63,9 +63,7 @@ This project was developed as a B.Tech final year project with an improved and m
 - Web3.js
 - Node.js
 - Express.js
-- MongoDB
 - Truffle
-- Docker
 - Celo Alfajores Testnet
 
 ---
