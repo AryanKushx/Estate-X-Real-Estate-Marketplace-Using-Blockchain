@@ -107,15 +107,3 @@ npm run build
 
 ---
 
-## 📸 Screenshots
-
-(Add your screenshots here)
-
----
-
-## 👨‍💻 Author
-
-**Aryan Kushwaha**
-
-B.Tech Computer Engineering  
-Aligarh Muslim University
