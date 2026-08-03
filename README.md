@@ -63,7 +63,6 @@ This project was developed as a B.Tech final year project with an improved and m
 - Node.js
 - Express.js
 - Truffle
-- Docker
 - Celo Alfajores Testnet
 
 ---
