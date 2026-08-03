@@ -1,72 +1,121 @@
+# 🏠 Estate-X: Real Estate Marketplace Using Blockchain
 
-# Celo Marketplace Dapp
-![](img/sharedRealEstateSubmission.png)
+## 📖 Description
 
-## Description
-This is a shared real-estate marketplace dapp where users can:
-- list properties for sale which creates a token for each share on sale
-- property owners can update the price or cancel the sale only when no shares have been sold
-- anyone can buy a share
-- only owners would see the update property button so that they can update the property details.
+Estate-X is a decentralized real estate marketplace built on blockchain technology that enables users to securely list, buy, and manage real estate properties. Each listed property is represented through blockchain-based ownership, ensuring transparency and trust in property transactions.
 
-The novelty here is the fact that when you uplaod your property for sale, ERC20 tokens that represent that house is automatically created and transferred to persons who purchase a piece of your property. 
+The platform allows property owners to create listings, update property details, and manage sales, while buyers can purchase property shares using blockchain transactions. Smart contracts automate ownership transfers and maintain an immutable record of transactions.
 
-## Smart Contract Functionality Added
-- Create an ERC20 token for each property added
-- Transfer those adequate number ERC20 tokens to the person who bought a share of the property
-- Cancel Sale Method
-- Update Sales Price Method
+This project was developed as a B.Tech final year project with an improved and modern user interface for a better user experience.
 
+---
 
-## Front End Functionality Added
-- Update Property Modal with the option to update price or cancel sale
-- Conditional display of update property button (only property owners see it)
-- Added more characteristics such as number of bedrooms, bathrooms etc
-- Added link to ERC20 House Token for each property 
+## ✨ Features
 
+- User Authentication
+- List properties for sale
+- Browse available properties
+- Buy property shares securely
+- Update property details (Owner only)
+- Cancel property sale
+- Blockchain-based ownership verification
+- Responsive and modern UI
+- Wallet integration
+- Property details including:
+  - Price
+  - Location
+  - Bedrooms
+  - Bathrooms
+  - Description
+  - Images
 
-## TODO
-- only approve tokens when there is no allowance
-- Allow property owner to update the number of shares on sale and thus transfer the right number of tokens 
-- NFTs to represent the homes instead of ERC20 tokens
+---
 
-## Live Demo
-[Shared Real Estate Marketplace Dapp](https://alysiahuggins.github.io/sharedRealEstateDapp/)
+## 🔗 Smart Contract Features
 
-## Usage
+- Create a blockchain record for every listed property
+- Secure ownership transfer after purchase
+- Update property price
+- Cancel property listing
+- Maintain transparent ownership records
+- Event logging for property transactions
 
-### Requirements
-1. Install the Metamask wallet
-2. Create a wallet.
-3. Go to [https://celo.org/developers/faucet](https://celo.org/developers/faucet) and get tokens for the alfajores testnet.
-4. Switch to the alfajores testnet in the Metamask.
+---
 
-### Test
-1. Create a property.
-2. Create a second account in your extension wallet and send them cUSD tokens.
-3. Buy property with secondary account.
-4. Check if balance of first account increased.
-5. Check your wallet to see if you have the House Token
-6. Create another property.
-7. Update the price of a property that you own.
-8. Cancel the sale of a property you own that haven't had any sales yet
+## 💻 Frontend Features
 
-### An Example of House Token and its transfers after each sale
-![](img/HouseTokenExample.png)
+- Modern React-based user interface
+- Property Marketplace
+- Property Details Page
+- Login & Signup Pages
+- Property Listing Form
+- Owner Dashboard
+- Wallet Connection
+- Responsive Design
 
-## Project Setup
+---
 
-### Install
-```
+## 🛠 Tech Stack
+
+- JavaScript
+- Solidity
+- Web3.js
+- Node.js
+- Express.js
+- Truffle
+- Docker
+- Celo Alfajores Testnet
+
+---
+
+## 🚀 Future Improvements
+
+- NFT-based Property Ownership
+- Property Fractionalization
+- Mortgage Integration
+- Rental Marketplace
+- Property Reviews & Ratings
+- Multi-chain Support
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/AryanKushx/Estate-X-Real-Estate-Marketplace-Using-Blockchain.git
+
+cd Estate-X-Real-Estate-Marketplace-Using-Blockchain
+
 npm install
 ```
 
-### Start
-```
+---
+
+## ▶️ Run the Project
+
+```bash
 npm run dev
 ```
 
-### Build
-```
+---
+
+## 🏗 Build
+
+```bash
 npm run build
 ```
+
+---
+
+## 📸 Screenshots
+
+(Add your screenshots here)
+
+---
+
+## 👨‍💻 Author
+
+**Aryan Kushwaha**
+
+B.Tech Computer Engineering  
+Aligarh Muslim University
