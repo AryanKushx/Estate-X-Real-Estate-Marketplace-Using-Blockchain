@@ -61,7 +61,6 @@ This project was developed as a B.Tech final year project with an improved and m
 - Solidity
 - Web3.js
 - Node.js
-- Express.js
 - Truffle
 - Celo Alfajores Testnet
 
