@@ -28,81 +28,37 @@ let bgColor = "#edc0e0"
 // [300000000000000000000000,0,1000000]
 
 
-// ethereum.on('chainChanged', (_chainId) => window.location.reload());
-
-// const connectMetamaskWallet = async function () {
-//     if (window.ethereum) {
-//         notification("⚠️ Please approve this DApp to use it.")
-//         try{
-//             const chainId = await ethereum.request({ method: 'eth_chainId' });
-//             if(parseInt(chainId,16)!=celoTestnetChainId){
-//                 throw "⚠️ Please switch to the Celo Alfajores Testnet to use this app."
-//             }
-            
-//             web3 = new Web3(window.ethereum);
-
-//             await window.ethereum.enable();
-//             notificationOff()
-
-//             const accounts = await web3.eth.getAccounts()
-//             defaultAccount = accounts[0];    
-            
-
-//             contract = new web3.eth.Contract(marketplaceAbi, MPContractAddress)
-//             erc20Contract = new web3.eth.Contract(erc20Abi, cUSDTokenAddress)
-
-//         } catch (error) {
-//             notification(`⚠️ ${error}.`)
-//           }
-        
-//       }else {
-//         notification("⚠️ Please install the Metamask.")
-//       }
-//   }
-
-
-ethereum.on('chainChanged', (_chainId) => {
-  window.location.reload();
-});
-
+ethereum.on('chainChanged', (_chainId) => window.location.reload());
 
 const connectMetamaskWallet = async function () {
-  if (window.ethereum) {
-      try {
-          // Prompt user to switch to the correct chain if needed
-          const chainId = await ethereum.request({ method: 'eth_chainId' });
-          if (parseInt(chainId, 16) !== celoTestnetChainId) {
-              throw "⚠️ Please switch to the Celo Alfajores Testnet to use this app.";
+    if (window.ethereum) {
+        notification("⚠️ Please approve this DApp to use it.")
+        try{
+            const chainId = await ethereum.request({ method: 'eth_chainId' });
+            if(parseInt(chainId,16)!=celoTestnetChainId){
+                throw "⚠️ Please switch to the Celo Alfajores Testnet to use this app."
+            }
+            
+            web3 = new Web3(window.ethereum);
+
+            await window.ethereum.enable();
+            notificationOff()
+
+            const accounts = await web3.eth.getAccounts()
+            defaultAccount = accounts[0];    
+            
+
+            contract = new web3.eth.Contract(marketplaceAbi, MPContractAddress)
+            erc20Contract = new web3.eth.Contract(erc20Abi, cUSDTokenAddress)
+
+        } catch (error) {
+            notification(`⚠️ ${error}.`)
           }
-          
-          // Initialize Web3
-          const web3 = new Web3(window.ethereum);
-          
-          // Request accounts (connect MetaMask)
-          const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-
-          // Check if accounts are available
-          if (!accounts || accounts.length === 0) {
-              throw "⚠️ No accounts found in MetaMask.";
-          }
-
-          const defaultAccount = accounts[0];
-          
-          // Initialize contracts
-          const contract = new web3.eth.Contract(marketplaceAbi, MPContractAddress);
-          const erc20Contract = new web3.eth.Contract(erc20Abi, cUSDTokenAddress);
-          
-          // Notification handling
-          notificationOff();
-
-      } catch (error) {
-          console.error("Error connecting to MetaMask:", error);
-          notification(`⚠️ ${error}`);
+        
+      }else {
+        notification("⚠️ Please install the Metamask.")
       }
-  } else {
-      notification("⚠️ Please install MetaMask.");
   }
-}
 
 const connectCeloWallet = async function () {
     if (window.celo) {
@@ -130,19 +86,6 @@ const connectCeloWallet = async function () {
     const cUSDBalance = await erc20Contract.methods.balanceOf(defaultAccount).call()
     document.querySelector("#balance").textContent = parseFloat(web3.utils.fromWei(cUSDBalance, 'ether')).toFixed(2)
   }
-
-  async function deleteProperty(propertyId) {
-    try {
-      await contract.methods.deleteProperty(propertyId).send({ from: kit.defaultAccount });
-      alert("Property deleted successfully!");
-      // Refresh the property list
-      getProperties(); // or your render function
-    } catch (error) {
-      console.error("Failed to delete property:", error);
-      alert("Error deleting property. See console for details.");
-    }
-  }
-  
 
   
 
@@ -202,12 +145,7 @@ const connectCeloWallet = async function () {
       return `
       <div class="card mb-4">
         <img class="card-img-top" src="${_property.image}" alt="...">
-        <div class="position-absolute top-0 end-0 mt-1 px-2 py-1 rounded-start" style="background-color: ${bgColor};">
-          ${_property.sold} Sold
-        </div>
-        <div class="position-absolute top-0 end-0 mt-5 px-2 py-1 rounded-start" style="background-color: ${bgColor};">
-          ${_property.numShares} Shares
-        </div>
+        
         <div class="card-body text-left p-4 position-relative">
         <div class="translate-middle-y position-absolute top-0">
         ${identiconTemplate(_property.owner)}
@@ -241,7 +179,7 @@ const connectCeloWallet = async function () {
           <a class="btn btn-lg btn-outline-dark buyBtn fs-6 p-3" style="${_property.status!=0?'display:none':'display:block'}" id=${
             _property.index
           }>
-            Buy for ${parseFloat(web3.utils.fromWei(_property.price.toString(), 'ether')/_property.numShares).toFixed(2)} cUSD per share
+            Buy for ${parseFloat(web3.utils.fromWei(_property.price.toString(), 'ether')/_property.numShares).toFixed(2)} cUSD
           </a>
 
           <!-- only show update price and cancel buttons if current viewer is the owner and there are no properties sold-->
@@ -252,12 +190,6 @@ const connectCeloWallet = async function () {
               data-bs-target="#updatePriceModal-${
                 _property.index}">
             Update Property
-          </a>
-          
-          <a class="btn btn-lg btn-outline-dark houseTokenBtn fs-6 p-3" href= "${celoExplorer}token/${_property.houseTokenAddress}/token-transfers" target="_blank" id=${
-            _property.index} style="${_property.status!=0?'display:none':'display:block'}"
-          >
-            House Token
           </a>
         </div>
       </div>
@@ -520,7 +452,3 @@ document.querySelector("#marketplace").addEventListener("click", async (e) => {
     } 
   }
 })
-
-window.addEventListener('load', async () => {
-  await connectCelo(); 
-});
